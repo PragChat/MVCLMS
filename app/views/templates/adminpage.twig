@@ -1,0 +1,116 @@
+<head>
+    <link href="/assets/styles/admin.css" rel="stylesheet">
+        <link href="/assets/styles/table.css" rel="stylesheet">
+            <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+            <style>
+        .adddata{
+            margin-top:20px;
+        }
+        #successMessage{
+            margin-bottom:-10px;
+        }
+    </style>
+        </head>
+
+        <p class="sign" align="center">
+            Welcome Admin
+        </p>
+
+        <form action="/managebooks" method="GET">
+            <button type="submit" class="submitbutton" id="manage" align="center">
+                Manage Books
+            </button>
+
+        </form>
+
+        <form action="/checkedbooks" method="GET">
+            <button type="submit" class="submitbutton" id="checkedbooks" align="center">
+                Checked Books
+            </button>
+
+        </form>
+
+        <table id="books">
+            <thead>
+                <tr align="center">
+                    <th>
+                        Book ID
+                    </th>
+                    <th>
+                        Book Name
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for book in bookdata %}
+                    <tr align="center">
+                        <td>
+                            {{ book.ISBN }}
+                        </td>
+                        <td type="text" id="{{ book.NAME }}">
+                            {{ book.NAME }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+        <form action="/addbooks" method="POST">
+
+            <div class="adddata" id="divs">
+                <label for="name">
+                    Book Name
+                </label>
+                <br>
+                    <input class="inputP" type="text" id="name" name="name" required></div>
+                    <div class="adddata" id="divs">
+                        <label for="isbn">
+                            ISBN
+                        </label>
+                        <br>
+                            <input class="inputP" type="number" id="isbn" name="isbn" required></div>
+                            {% if dataEntered %}
+                                <p style="color:green" id="successMessage" class="login" align="center">
+                                    Add book Successful !
+                                </p>
+                            {% endif %}
+                            {% if invaliddata %}
+                                <p style="color:red" id="successMessage" class="login" align="center">
+                                    Data Invalid 
+                                </p>
+                            {% endif %}
+                            <button id="adder" class="submitbutton" type="submit">
+                                Add Book
+                            </button>
+
+                        </form>
+
+                        <button id="logout" class="submitbutton" align="center" onclick="logoutadmin()" type="button">
+                            &#160&#160&#160&#160Log out&#160&#160&#160&#160
+                        </button>
+
+                        <script>
+
+
+    function logoutadmin()
+        {    
+            
+            
+        $.ajax({
+            url: "/logout",
+            type: "GET",
+            
+            success:function(){
+
+                window.location = "/";
+            }   
+        }); 
+
+        }
+
+</script>
+                        
