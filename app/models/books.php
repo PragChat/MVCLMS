@@ -41,22 +41,22 @@ class Books
   public static function updateCheckin($Name, $RequestId)
   {
     $db = \DB::get_instance();
-    $Data = array($RequestId);
+    //$Data = array($RequestId);
 
-    $Size = sizeof($Data);
+    //$Size = sizeof($Data);
 
-    for ($x = 0; $x < $Size; $x++) {
+    //for ($x = 0; $x < $Size; $x++) {
 
 
       $Sth = $db->prepare("UPDATE BOOKS SET IF_TAKEN = 0, TAKEN_NAME = NULL WHERE ISBN=?");
-      $Sth->execute([$RequestId[$x]]);
-    }
+      $Sth->execute([$RequestId]);
+    //}
 
-    for ($x = 0; $x < $Size; $x++) {
+    //for ($x = 0; $x < $Size; $x++) {
 
       $Sth = $db->prepare("DELETE FROM REQUESTS WHERE ISBN = ?");
-      $Sth->execute([$RequestId[$x]]);
-    }
+      $Sth->execute([$RequestId]);
+    //}
   }
 
 
@@ -76,14 +76,14 @@ class Books
   public static function updateRequest($Name, $books_id)
   {
     $db = \DB::get_instance();
-    $Data = array($books_id);
-    $Size = sizeof($books_id);
+    //$Data = array($books_id);
+    //$Size = sizeof($books_id);
 
-    for ($x = 0; $x < $Size; $x++) {
+    //for ($x = 0; $x < $Size; $x++) {
       $Status = 0;
       $Sth = $db->prepare("INSERT INTO REQUESTS (CLIENT,ISBN,REQUEST_TYPE) VALUES (?,?,?)");
-      $Sth->execute([$Name, $books_id[$x], $Status]);
-    }
+      $Sth->execute([$Name, $books_id, $Status]);
+    //}
 
     $Sth = $db->prepare("DELETE c1 FROM REQUESTS c1 INNER JOIN REQUESTS c2 WHERE c1.ID > c2.ID AND c1.ISBN = c2.ISBN AND c1.CLIENT = c2.CLIENT");
     $Sth->execute();
@@ -130,24 +130,24 @@ class Books
   public static function updateRequestAdmin($RequestId, $Name)
   {
     $db = \DB::get_instance();
-    $Data = array($RequestId);
-    $Size = sizeof($RequestId);
+    //$Data = array($RequestId);
+    //$Size = sizeof($RequestId);
 
     
       //change status to approved 
 
-      for ($x = 0; $x < $Size; $x++) {
+      //for ($x = 0; $x < $Size; $x++) {
 
         $Sth = $db->prepare("UPDATE BOOKS INNER JOIN REQUESTS USING (ISBN) SET IF_TAKEN = 1, TAKEN_NAME = REQUESTS.CLIENT WHERE ID=?");
-        $Sth->execute([$RequestId[$x]]);
+        $Sth->execute([$RequestId]);
       
 
-      for ($x = 0; $x < $Size; $x++) {
+      //for ($x = 0; $x < $Size; $x++) {
 
         $Sth = $db->prepare("DELETE FROM REQUESTS WHERE ID=?");
-        $Sth->execute([$RequestId[$x]]);
-      }
-    }
+        $Sth->execute([$RequestId]);
+      //}
+    //}
     }
   }
 

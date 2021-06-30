@@ -11,7 +11,7 @@ class Home
 
         if ($_SESSION["UserName"] != NULL) {
 
-            if ($_SESSION['Role'] != NULL) {
+            if ($_SESSION['Role'] != "User") {
                 header("Location:/admin");
             } else {
                 // echo \View\Loader::make()->render("templates/userpage.twig");
@@ -19,37 +19,6 @@ class Home
             }
         } else {
             echo \View\Loader::make()->render("templates/home.twig");
-        }
-    }
-}
-
-
-class User
-{
-
-    public function get()
-    {
-        if (!isset($_SESSION)) {
-            echo \View\Loader::make()->render("templates/home.twig");
-        } else {
-            echo \View\Loader::make()->render("templates/userpage.twig");
-        }
-    }
-}
-
-
-class UserRequests
-{
-
-    public function get()
-    {
-        
-        if (!isset($_SESSION)) {
-            echo \View\Loader::make()->render("templates/home.twig");
-        } else {
-            echo \View\Loader::make()->render("templates/userrequests.twig", array(
-                "book" => \Model\Books::findReq($_SESSION["UserName"]),
-            ));
         }
     }
 }

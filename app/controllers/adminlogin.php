@@ -4,13 +4,13 @@ namespace Controller;
 
 session_start();
 
-class Login
+class AdminLogin
 {
 
     public function get()
     {
 
-        echo \View\Loader::make()->render("templates/login.twig");
+        echo \View\Loader::make()->render("templates/admin_login.twig");
     }
 
     public function post()
@@ -18,21 +18,20 @@ class Login
         if(\Controller\Utils::isSetAll($_POST["name"], $_POST["password"])){
         $Name = $_POST["name"];
         $Password = $_POST["password"];
-        $Result = \Model\Auth::verifyLogin($Name, $Password);
+        $Result = \Model\Auth::verifyLoginAdmin($Name, $Password);
 
         if ($Result['PWD'] == null) {
-            echo \View\Loader::make()->render("templates/login.twig", array(
+            echo \View\Loader::make()->render("templates/admin_login.twig", array(
                 "EmailDNE" => true,
             ));
-        } else if (password_verify($Password, $Result['PWD'])) {
-
+        } else if ($Password == $Result['PWD']) {
+            //echo "Correct Pw";
             $_SESSION["UserName"] = $Name;
-            $_SESSION["Role"] = "User";
+            $_SESSION["Role"] = "Admin";
             $_SESSION["LoggedIn"] = 1;
-
-            header("Location:/user");
+            header("Location:/admin");
         } else {
-            echo \View\Loader::make()->render("templates/login.twig", array(
+            echo \View\Loader::make()->render("templates/admin_login.twig", array(
                 "wrongpw" => true,
             ));
         }

@@ -12,6 +12,7 @@ class Register
 
     public function post()
     {
+        if(\Controller\Utils::isSetAll($_POST["name"], $_POST["password"])){
         $Name = $_POST["name"];
         $Password = $_POST["password"];
         $Password = password_hash($Password, PASSWORD_BCRYPT);
@@ -22,5 +23,5 @@ class Register
         echo \View\Loader::make()->render("templates/register.twig", array(
             "dataEntered" => true,
         ));
-    }
+    }}
 }

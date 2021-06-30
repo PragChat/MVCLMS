@@ -1,3 +1,4 @@
+
 create database LMS;
 use LMS;
 create table BOOKS(
