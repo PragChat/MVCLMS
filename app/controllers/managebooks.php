@@ -22,14 +22,7 @@ class ManageBooks
     {
         if(\Controller\Utils::isSetAll($_POST["request"])){
         $db = \DB::get_instance();
-
-        $Data = array($_POST["request"]);
-        $Size = sizeof($Data);
         $Name = $_SESSION["UserName"];
-        //echo \View\Loader::make()->render("templates/test.twig");
-        for($x = 0; $x<$Size; $x++)
-        {
-            \Model\Books::updateRequestAdmin($_POST["request"][$x], $Name);
-        }
+            \Model\Books::updateRequestAdmin($_POST["request"], $Name);
     }}
 }

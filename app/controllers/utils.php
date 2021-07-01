@@ -11,13 +11,6 @@ class Utils
             header("Location: /");
         }
     }
-    public static function loggedInUserRedirectToLogin()
-    {
-        if(!isset($_SESSION["loggedIn"]))
-        {
-            header("Location: /login");
-        }
-    }
 
     public static function loggedInAdmin()
     {

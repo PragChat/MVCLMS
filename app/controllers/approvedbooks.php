@@ -24,12 +24,7 @@ class ApprovedBooks
     {
         if(\Controller\Utils::isSetAll($_POST["checkin"])){
         $db = \DB::get_instance();
-        $Data = array($_POST["checkin"]);
-        $Size = sizeof($Data);
         $Name = $_SESSION["UserName"];
-        for($x = 0; $x < $Size; $x++)
-        {
-            \Model\Books::updateCheckin($Name, $_POST["checkin"][$x]);
-        }
+            \Model\Books::updateCheckin($Name, $_POST["checkin"]);
     }}
 }

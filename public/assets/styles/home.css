@@ -14,7 +14,7 @@ body {
 
 .sign {
     padding-top: 40px;
-    margin-bottom: -2vh;
+    margin : 30px;
     color: #55aa60;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
@@ -74,7 +74,25 @@ form.form1 {
     cursor: pointer;
     border-radius: 5em;
     color: #FFFFFF;
-    background: linear-gradient(to right, #0d581a, #0ea347);
+    background: #0ea347;
+    border: 0;
+    margin: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 33.5%;
+    font-size: 14px;
+    font-weight: 1000;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.submitbutton2 {
+    cursor: pointer;
+    border-radius: 5em;
+    color: #FFFFFF;
+    background: #0ea347;
     border: 0;
     margin: 30px;
     padding-left: 40px;
@@ -93,6 +111,40 @@ form.form1 {
 }
 
 .submitbutton:hover {
+    transform: scale(1.05);
+}
+
+.submitbutton2 {
+    transition: all .2s ease-in-out;
+}
+
+.submitbutton2:hover {
+    transform: scale(1.05);
+}
+
+.submitbutton3 {
+    cursor: pointer;
+    border-radius: 5em;
+    color: #FFFFFF;
+    background: #0ea347;
+    border: 0;
+    margin: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 34%;
+    font-size: 14px;
+    font-weight: 1000;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.submitbutton3 {
+    transition: all .2s ease-in-out;
+}
+
+.submitbutton3:hover {
     transform: scale(1.05);
 }
 

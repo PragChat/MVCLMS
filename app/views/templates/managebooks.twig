@@ -66,7 +66,7 @@
 
             </table>
 
-            <button class="submitbutton" id="back" onclick="returnback()">
+            <button class="submitbutton" id="back" onclick="window.location.href='/admin'">
                 Back
             </button>
             <button class="submitbutton" id="approve" onclick="Approve()">
@@ -74,11 +74,6 @@
             </button>
 
             <script>
-
-    function returnback(){
-
-        window.location = "/admin"
-    }
 
     function Approve(){
         
@@ -91,7 +86,7 @@
             request_id_checked.push(checkbox[i].id);
         }
 
-        //console.log(request_id_checked);
+        console.log(request_id_checked);
 
         
         $.ajax({

@@ -10,7 +10,7 @@ class Admin
     {
         \Controller\Utils::loggedInAdmin();
             echo \View\Loader::make()->render("templates/adminpage.twig", array(
-                "bookdata" => \Model\Books::findAvailable(),
+                "bookdata" => \Model\Books::findAll(),
             ));
         
     }

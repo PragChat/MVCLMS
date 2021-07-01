@@ -1,7 +1,8 @@
 #books {
     font-family: 'Ubuntu', sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 70%;
+    margin-left: 15%;
 }
 
 #books tr:nth-child(even) {
@@ -34,18 +35,23 @@
     font-size: 26px;
 }
 
+.fl{
+    display: flex;
+    justify-content: center;
+    margin-left: -22.5%;
+}
+
 .submitbutton {
     cursor: pointer;
     border-radius: 5em;
     color: #fff;
-    background: linear-gradient(to right, #146425, #10b92c);
+    background: #10b92c;
     border: 0;
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 10px;
     padding-top: 10px;
     margin: 30px;
-    margin-left: 45%;
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);

@@ -24,15 +24,9 @@ class Books
     {
         if(\Controller\Utils::isSetAll($_POST["checkout"])){
         $db = \DB::get_instance();
-        $Data = array($_POST["checkout"]);
-        $Size = sizeof($Data);
 
         $Name = $_SESSION["UserName"];
-
-        for($x = 0; $x < $Size; $x++)
-        {
-            \Model\Books::updateRequest($Name, $_POST["checkout"][$x]);
-        }
+            \Model\Books::updateRequest($Name, $_POST["checkout"]);
     }}
 }
 

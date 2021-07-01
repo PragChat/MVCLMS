@@ -20,11 +20,11 @@ class AdminLogin
         $Password = $_POST["password"];
         $Result = \Model\Auth::verifyLoginAdmin($Name, $Password);
 
-        if ($Result['PWD'] == null) {
+        if ($Result['PWD'] === null) {
             echo \View\Loader::make()->render("templates/admin_login.twig", array(
                 "EmailDNE" => true,
             ));
-        } else if ($Password == $Result['PWD']) {
+        } else if ($Password === $Result['PWD']) {
             //echo "Correct Pw";
             $_SESSION["UserName"] = $Name;
             $_SESSION["Role"] = "Admin";
